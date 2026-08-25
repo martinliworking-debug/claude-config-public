@@ -1,0 +1,71 @@
+# Platform-specific binaries
+jq.exe
+jq
+
+# Session/cache data (machine-specific)
+cache/
+history.jsonl
+paste-cache/
+shell-snapshots/
+file-history/
+debug/
+downloads/
+ide/
+plugins/
+projects/
+backups/
+plans/
+
+# Sensitive/temporary files
+.last-cleanup
+mcp-needs-auth-cache.json
+cc-statusline-state.json
+stats-cache.json
+settings.json.bak
+settings.json.orig
+settings.local.json
+settings.local.json.bak*
+.credentials.json
+policy-limits.json
+sessions/
+tasks/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Node dependencies (machine-local; reinstall per machine if a skill needs them)
+node_modules/
+
+# Skill test output
+_test_out/
+
+# Usage telemetry
+usage-data/
+
+# Session env / telemetry
+session-env/
+telemetry/
+
+# Machine-local runtime state (never sync)
+chrome/
+chrome-automation-profile/
+daemon/
+daemon.lock
+daemon.log
+daemon.status.json
+jobs/
+remote-settings.json
+.last-update-result.json
+
+# Dated SCRATCH/ARCHIVE backup folders created inside skill dirs (any depth)
+**/.bak_*/
+
+# Playwright MCP runtime debug artifacts (console logs, page snapshots of logged-in sessions)
+**/.playwright-mcp/
+
+# Playwright CLI runtime artifacts (page snapshot .yml + screenshot .png, written to cwd per call)
+**/.playwright-cli/
+
+# Impeccable skill hook cache (machine-local, regenerated on Edit/Write)
+**/.impeccable/

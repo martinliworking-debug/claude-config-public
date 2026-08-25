@@ -1,0 +1,35 @@
+{
+  "_comment": "Template of user-scope MCP servers. Secrets are NOT stored here. Recreate the servers you need with `claude mcp add` (see README.md, MCP section) and supply your own tokens. The live config lives in ~/.claude.json (user scope) and ~/.mcp.json (project scope) - both intentionally NOT tracked by this repo (they hold tokens, absolute paths, and per-project session data).",
+  "mcpServers": {
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    },
+    "filesystem": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "<YOUR_HOME_DIR>"],
+      "_note": "Set the last arg to the directory tree the server may access, e.g. your home dir."
+    },
+    "excel": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@negokaz/excel-mcp-server"]
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer <YOUR_GITHUB_PAT>"
+      },
+      "_note": "Do NOT commit a real token. Generate a PAT and add it on the new machine."
+    },
+    "officecli": {
+      "type": "stdio",
+      "command": "<LOCALAPPDATA>\\OfficeCli\\officecli.exe",
+      "args": ["mcp"],
+      "_note": "Standalone Windows exe, not npm/pip - install officecli on the machine first, then point at its install path."
+    }
+  }
+}
