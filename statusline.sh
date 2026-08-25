@@ -39,11 +39,14 @@ import os
 mcp_count = ''
 settings_effort = ''
 try:
-    settings_path = os.path.expanduser('~/.claude/settings.json')
-    with open(settings_path) as _f:
-        _s = json.load(_f)
-    mcp_count = str(len(_s.get('mcpServers', {})))
-    settings_effort = _s.get('effortLevel', '') or ''
+    with open(os.path.expanduser('~/.claude/settings.json')) as _f:
+        settings_effort = json.load(_f).get('effortLevel', '') or ''
+except Exception:
+    pass
+try:
+    # Live user-scope MCP servers are registered in ~/.claude.json, not settings.json.
+    with open(os.path.expanduser('~/.claude.json')) as _f:
+        mcp_count = str(len(json.load(_f).get('mcpServers', {})))
 except Exception:
     pass
 
