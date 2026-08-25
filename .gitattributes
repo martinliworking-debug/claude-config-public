@@ -1,0 +1,10 @@
+# Bash scripts must check out with LF or Git Bash on Windows fails on the CR.
+*.sh text eol=lf
+statusline.sh text eol=lf
+
+# PowerShell and batch are happy either way; keep native Windows endings.
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+
+# Everything else: normalise in the repo, native in the working copy.
+* text=auto
